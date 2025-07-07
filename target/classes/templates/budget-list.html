@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Budgets</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+    <h2 class="center-heading">View Your Budgets</h2>
+
+    <table class=budget-table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Created At</th>
+                <!-- Future: Edit/Delete -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="budget : ${budgets}">
+                <td th:text="${budget.id}">1</td>
+                <td th:text="${budget.name}">Budget Name</td>
+                <td th:text="${budget.amount}">1000</td>
+                <td th:text="${#temporals.format(budget.startDate, 'yyyy-MM-dd')}">2025-07-01</td>
+                <td th:text="${#temporals.format(budget.endDate, 'yyyy-MM-dd')}">2025-07-30</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <br/>
+    <a th:href="@{/dashboard}" class="back-link">Back to Dashboard</a>
+    
+</div>
+</body>
+</html>
